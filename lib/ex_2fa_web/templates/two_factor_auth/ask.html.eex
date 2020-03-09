@@ -1,0 +1,14 @@
+<h1>Two-factor authentication</h1>
+
+<%= if get_flash(@conn, :error) do %>
+  <div class="validation-error" role="alert">
+    <%= get_flash(@conn, :error) %>
+  </div>
+<% end %>
+
+<p>Enter the code from your authenticator app:</p>
+<%= form_for @conn, two_factor_auth_path(@conn, :check), fn f -> %>
+  <label><%= text_input f, :totp_code, autofocus: true, pattern: "[0-9]*", inputmode: "numeric" %></label>
+  <br />
+  <%= submit "Submit" %>
+<% end %>

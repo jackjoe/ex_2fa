@@ -1,0 +1,4 @@
+#!/bin/bash -ex
+
+source .env
+iex -S mix phx.server

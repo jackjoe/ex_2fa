@@ -1,0 +1,5 @@
+<%= render_partial("head.html", assigns) %>
+  <nav id="main-nav">
+  </nav>
+  <%= render @view_module, @view_template, assigns %>
+<%= render_partial("foot.html", assigns) %>

@@ -1,0 +1,30 @@
+<h2><%= gettext("Inloggen") %></h2>
+
+<p>Simplistic demo on handling 2FA in our Phoenix apps.</p>
+<p>There is a demo user account <em><strong>randy@jackjoe.be</strong></em> with the password '<strong>dummy</strong>'.</p>
+<p>Uses this account to log in below.</p>
+
+<%= if get_flash(@conn, :info) do %>
+  <div class="alert alert-info" role="alert">
+    <%= get_flash(@conn, :info) %>
+  </div>
+<% end %>
+
+<%= if get_flash(@conn, :error) do %>
+  <div class="validation-error" role="alert">
+    <%= get_flash(@conn, :error) %>
+  </div>
+<% end %>
+
+<%= form_for @conn, auth_path(@conn, :create), [as: :user, novalidate: true], fn f -> %>
+  <div class="form-group">
+    <%= label(f, :email, gettext("Email"), class: "form-label") %>
+    <%= email_input(f, :email, class: "form-control", required: true, autofocus: true) %>
+  </div>
+  <div class="form-group">
+    <%= label(f, :password, gettext("Password"), class: "form-label") %>
+    <%= password_input(f, :password, class: "form-control", required: true) %>
+  </div>
+
+  <%= submit gettext("Inloggen"), class: "" %>
+<% end %>

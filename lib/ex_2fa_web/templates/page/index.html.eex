@@ -1,0 +1,15 @@
+<h1>2FA Demo</h1>
+<%= if @user.is_2fa do %>
+  <p>Great stuff <%= @user.firstname %>, you made it past the login AND did it super secure <strong>two-factor authentication</strong> style!</p>
+  <iframe src="https://giphy.com/embed/jwKpxz0uGrqcTjDKvs" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<% else %>
+  <p>Great stuff <%= @user.firstname %>, you made it past the login!</p>
+  <iframe src="https://giphy.com/embed/ozVjnsXu5f0li" width="480" height="362" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+  <br /></br />
+  <p>Now let's make it more secure by setting up <%= link "two-factor authentication", to: two_factor_auth_path(@conn, :new) %>.</p>
+<% end %>
+
+<br /></br />
+<%= link "Log Out", to: auth_path(@conn, :logout) %>
+
+

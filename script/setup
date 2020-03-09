@@ -1,0 +1,10 @@
+
+#!/bin/bash -e
+
+mix local.hex
+mix deps.get
+mix compile
+
+./script/dev-certificates
+
+make run

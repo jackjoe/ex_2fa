@@ -1,0 +1,22 @@
+<h1>Setup two-factor authentication</h1>
+
+<%= if get_flash(@conn, :error) do %>
+  <div class="validation-error" role="alert">
+    <%= get_flash(@conn, :error) %>
+  </div>
+<% end %>
+
+<ol>
+  <li>Open up your favorite authenticator app, like Authy, Google Authenticator App, ...</li>
+  <li>
+    <div>Scan the following QR code:</div>
+    <img src="<%= static_path(@conn, "/#{@qr_code}") %>" alt="" style="margin: 20px 0;" />
+  </li>
+  <li>
+    <%= form_for @conn, two_factor_auth_path(@conn, :create), fn f -> %>
+      <label>Input the result: <%= text_input f, :totp_code, autofocus: true, pattern: "[0-9]*", inputmode: "numeric" %></label>
+      <br />
+      <%= submit "Submit" %>
+    <% end %>
+  </li>
+</ol>
