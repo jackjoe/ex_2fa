@@ -4,6 +4,7 @@
 mix local.hex
 mix deps.get
 mix compile
+mix run priv/repo/seeds.exs
 
 ./script/dev-certificates
 

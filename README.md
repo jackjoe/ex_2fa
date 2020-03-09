@@ -13,7 +13,8 @@ When logging in the `Auth` plug will check if the user has 2FA active. If so, re
 
 The dashboard shows a link to setup 2FA on a separate page. The QR code can be used in Authy, 1Password, ...
 
-To get started:
+To get started, first, be sure to create a database and configure the credentials in `config/dev.exs`. Then run
+
 ```bash
 make install
 make run
